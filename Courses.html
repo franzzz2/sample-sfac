@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRANDED</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</head>
+<body class="bg-white">
+    <!-- Header Section -->
+    <header class="bg-[#A63D2D] p-4 flex items-center justify-between">
+        <div class="flex items-center">
+            <img alt="Logo" class="h-20 w-30" src="images/logo.png" width="200">
+        </div>
+        <nav class="flex space-x-6">
+            <a class="nav-link text-white text-lg font-bold" href="Home.html">HOME</a>
+            <a class="nav-link text-white text-lg font-bold" href="#">ASSESSMENT</a>
+            <a class="nav-link text-white text-lg font-bold" href="Lecture.html">E-LECTURES</a>
+            <a class="nav-link text-white text-lg font-bold bg-[#F4A300] p-2 rounded" href="Courses.html">COURSES</a>
+            <a class="nav-link text-white text-lg font-bold" href="About.html">ABOUT US</a>
+        </nav>
+        <div class="dropdown">
+            <i class="fas fa-user text-white text-2xl"></i>
+            <div class="dropdown-content">
+                <p><a class="LogIn" href="Login.html">LogIn</a></p>
+                <p><a class="LogOut" href="#">LogOut</a></p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Program Offerings Section -->
+    <section class="program-offerings my-10 text-center">
+        <h1 class="text-3xl font-bold text-[#A10000] mb-8">PROGRAM OFFERINGS</h1>
+
+        <div class="program-section bg-gray-200 border-2 border-yellow-500 mx-auto my-6 p-6 max-w-2xl">
+            <h2 class="text-2xl font-semibold text-[#A10000] mb-4">Preschool</h2>
+            <ul class="list-none">
+                <li class="font-bold text-lg text-[#A10000]">Nursery</li>
+                <li class="font-bold text-lg text-[#A10000]">Pre-Kinder</li>
+                <li class="font-bold text-lg text-[#A10000]">Kindergarten</li>
+            </ul>
+        </div>
+
+        <div class="program-section bg-gray-200 border-2 border-yellow-500 mx-auto my-6 p-6 max-w-2xl">
+            <h2 class="text-2xl font-semibold text-[#A10000] mb-4">Grade School</h2>
+            <ul class="list-none">
+                <li class="font-bold text-lg text-[#A10000]">Grade 1-6</li>
+            </ul>
+        </div>
+
+        <div class="program-section bg-gray-200 border-2 border-yellow-500 mx-auto my-6 p-6 max-w-2xl">
+            <h2 class="text-2xl font-semibold text-[#A10000] mb-4">Junior High School</h2>
+            <ul class="list-none">
+                <li class="font-bold text-lg text-[#A10000]">Science Program</li>
+            </ul>
+        </div>
+
+        <div class="program-section bg-gray-200 border-2 border-yellow-500 mx-auto my-6 p-6 max-w-2xl">
+            <h2 class="text-2xl font-semibold text-[#A10000] mb-4">Senior High School</h2>
+            <h3 class="text-xl font-semibold text-[#A10000] mt-4">Academic Track</h3>
+            <ul class="list-none">
+                <li class="font-bold text-lg text-[#A10000]">STEM (Science, Technology, Engineering and Mathematics)</li>
+                <li class="font-bold text-lg text-[#A10000]">ABM (Accountancy, Business and Management)</li>
+                <li class="font-bold text-lg text-[#A10000]">HUMSS (Humanities and Social Sciences)</li>
+                <li class="font-bold text-lg text-[#A10000]">GA (General Academics)</li>
+            </ul>
+            <h3 class="text-xl font-semibold text-[#A10000] mt-4">Technical-Vocational-Livelihood (TVL) Track</h3>
+            <ul class="list-none">
+                <li class="font-bold text-lg text-[#A10000]">HE (Home Economics)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="text-white py-8" style="background-color: #A33B3B;">
+        <div class="container mx-auto px-4 flex flex-wrap justify-between">
+            <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                <h2 class="font-bold text-lg mb-4">Address</h2>
+                <p><i class="fas fa-map-marker-alt"></i> 96 Bayanan, Bacoor City, Bacoor, Philippines</p>
+                <p><i class="fas fa-phone-alt"></i> (046) 501 1135</p>
+                <p><i class="fas fa-envelope"></i> admissions.sfacbacoor@gmail.com</p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://www.facebook.com/mysfacbacoor"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube .com/@sfacbacoor-basiceducation"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mysfacbacoor"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                <h2 class="font-bold text-lg mb-4">Info</h2>
+                <p>WELCOME TO STRANDED! A comprehensive track path assessment website. Journey on choosing the most suitable track which fits your personal interest.</p>
+            </div>
+            <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                <h2 class="font-bold text-lg mb-4">Links</h2>
+                <ul>
+                    <li><a href="Home.html" class="hover:underline">Home</a></li>
+                    <li><a href="#" class="hover:underline">Assessment</a></li>
+                    <li><a href="Lecture.html" class="hover:underline">E-Lectures</a></li>
+                    <li><a href="#" class="hover:underline">Courses</a></li>
+                    <li><a href="About.html" class="hover:underline">About Us</a></li>
+                </ul>
+            </div>
+            <div class="w-full md:w-1/4">
+                <h2 class="font-bold text-lg mb-4">Subscribe</h2>
+                <form>
+                    <input type="email" placeholder="Enter email" class="w-full p-2 mb-4 border-b-2 border-white bg-transparent text-white placeholder-white focus:outline-none">
+                    <button type="submit" class="w-full bg-blue-500 text-white py-2">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-8">
+            <p>© 2024 All Rights Reserved By STRANDED</p>
+        </div>
+    </footer>
+
+    <script src="javascript/script.js"></script>
+</body>
+</html>

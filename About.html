@@ -1,0 +1,200 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRANDED</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        /* Custom hover effect for navigation links */
+        .nav-link:hover {
+            background-color: #ffae00; /* Yellow background */
+            color: rgb(255, 255, 255); /* Black text color for contrast */
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+        }
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+        display: block;
+        }
+        .fa-user {
+        color: white;
+        font-size: 20px; /* Adjust font size as needed */
+        margin-left: 80px; /* Adjust margin as needed */
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header Section -->
+    <header class="bg-[#A63D2D] p-4 flex items-center justify-between">
+        <div class="flex items-center">
+            <img alt="Logo" class="h-20 w-30" src="images/logo.png" width="200">
+        </div>
+        <!-- Navigation Bar -->
+        <nav class="flex space-x-6">
+            <a class="nav-link text-white text-lg font-bold" href="Home.html">HOME</a>
+            <a class="nav-link text-white text-lg font-bold" href="#">ASSESSMENT</a>
+            <a class="nav-link text-white text-lg font-bold" href="Lecture.html">E-LECTURES</a>
+            <a class="nav-link text-white text-lg font-bold" href="Courses.html">COURESES</a>
+            <a class="nav-link text-white text-lg font-bold bg-[#F4A300] p-2 rounded" href="#">ABOUT US</a>
+        </nav>
+        <div>
+            
+            <div class="dropdown">
+                <i class="fas fa-user text-white text-2xl"></i>
+                <div class="dropdown-content">
+                <a class="LogIn" href="Login.html">LogIn</a><br>
+                <a class="LogOut" href="#">LogOut</a>
+                </div>
+              </div>
+        </div>
+    </header>
+    <html>
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-red-900 text-white font-sans">
+    <div class="container mx-auto p-4">
+        <div class="flex">
+            <div class="w-1/3">
+                <img alt="Image of a building with a sign that reads 'SAINT FRANCIS OF ASSISI COLLEGE'" class="w-full" src="images/sfac.jpeg"/>
+            </div>
+            <div class="w-2/3 pl-4">
+                <h1 class="text-xl font-bold">
+                    VISION, MISSION AND CORE VALUES
+                </h1>
+                <div class="mt-4">
+                    <div class="border-b border-gray-700 py-2">
+                        <button class="w-full text-left flex items-center justify-between" onclick="toggleContent('visionContent')">
+                            <span>Vision</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="visionContent" class="hidden mt-2">
+                            <p>Saint Francis of Assisi College (SFAC) is a hub for progressive and holistic education, guided by the virtues of Saint Francis of Assisi that empowers learners with a solid academic foundation enriched by physical, spiritual, and cultural advancement.</p>
+                        </div>
+                    </div>
+                    <div class="border-b border-gray-700 py-2">
+                        <button class="w-full text-left flex items-center justify-between" onclick="toggleContent('missionContent')">
+                            <span>Mission</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="missionContent" class="hidden mt-2">
+                            <p>In line with this vision, SFAC is fully committed to:</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li>Deliver relevant, well-designed quality education from the Basic Education to the Graduate level, through its corps of highly-trained faculty;</li>
+                                <li>Nurture an ideal environment that hones students for academic success, molds them in cultural awareness, and prepares them for sustained participation and leadership in sports and athletics;</li>
+                                <li>Incorporate a values system in the curriculum that promotes love of God, family, and country; and,</li>
+                                <li>Integrate time-honored Filipino values in the pursuit of personal advancement.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="border-b border-gray-700 py-2">
+                        <button class="w-full text-left flex items-center justify-between" onclick="toggleContent('coreValuesContent')">
+                            <span>Core Values</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="coreValuesContent" class="hidden mt-2">
+                            <p>SFAC is guided by these core values:</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li>COMMITMENT – there is a commitment by each and every member of the Franciscan community to the vision set forth by the Institution;
+                                </li>
+                                <li>OPPORTUNITY – there is a constant desire to seize the opportunity to become better members and leaders of the community, as well as contributors to nation- building;</li>
+                                <li>RESPECT – there is an utmost respect for one’s self, peers, and co-stakeholders in the Franciscan community;</li>
+                                <li>EXCELLENCE – there is a drive to always make effective use of talents and skills in order to produce outputs of the highest quality.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleContent(contentId) {
+            const content = document.getElementById(contentId);
+            const icon = event.currentTarget.querySelector('i');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+    </script>
+</body>
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-white">
+  <footer class="text-white py-8" style="background-color: #A33B3B;">
+        <div class="container mx-auto px-4 flex flex-wrap justify-between">
+            <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                <h2 class="font-bold text-lg mb-4">Address</h2>
+                <p><i class="fas fa-map-marker-alt"></i> 96 Bayanan, Bacoor City, Bacoor, Philippines</p>
+                <p><i class="fas fa-phone-alt"></i> (046) 501 1135</p>
+                <p><i class="fas fa-envelope"></i> admissions.sfacbacoor@gmail.com</p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://www.facebook.com/mysfacbacoor"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@sfacbacoor-basiceducation"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mysfacbacoor?fbclid=IwY2xjawGVls5leHRuA2FlbQIxMAABHVJg5h9icm27CbuCvJvhugQA4TyMSmPqjVaFqR23UUR67OJUrax0btDJ_w_aem_imnfK_bb4g7O-Talb0Obrg"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                <h2 class="font-bold text-lg mb-4">Info</h2>
+                <p>WELCOME TO STRANDED!
+                  A comprehensive track path assessment website. Journey on choosing the most suitable track which fits your personal interest.</p>
+            </div>
+            <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                <h2 class="font-bold text-lg mb-4">Links</h2>
+                <ul>
+                    <li><a href="Home.html" class="hover:underline">Home</a></li>
+                    <li><a href="#" class="hover:underline">Assessment</a></li>
+                    <li><a href="Lecture.html" class="hover:underline">E-Lectures</a></li>
+                    <li><a href="#" class="hover:underline">Courses</a></li>
+                    <li><a href="About.html" class="hover:underline">About Us</a></li>
+                </ul>
+            </div>
+            <div class="w-full md:w-1/4">
+                <h2 class="font-bold text-lg mb-4">Subscribe</h2>
+                <form>
+                    <input type="email" placeholder="Enter email" class="w-full p-2 mb-4 border-b-2 border-white bg-transparent text-white placeholder-white focus:outline-none">
+                    <button type="submit" class="w-full bg-blue-500 text-white py-2">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-8">
+            <p>© 2024 All Rights Reserved By STRANDED</p>
+        </div>
+    </footer>
+</body>
+</html>

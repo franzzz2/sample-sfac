@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRANDED</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .nav-link:hover {
+            background-color: #ffae00;
+            color: rgb(255, 255, 255);
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .fa-user {
+            color: white;
+            font-size: 20px;
+            margin-left: 80px;
+        }
+        /* Animation styling */
+        .animate {
+            animation: bounce 0.5s ease-in-out;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        /* Course dropdown styling */
+        .course-info {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 2px solid #A63D2D;
+            background-color: #fff8e1;
+            color: #333;
+            border-radius: 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <header class="bg-[#A63D2D] p-4 flex items-center justify-between">
+        <div class="flex items-center">
+            <img alt="Logo" class="h-20 w-30" src="images/logo.png" width="200">
+        </div>
+        <nav class="flex space-x-6">
+            <a class="nav-link text-white text-lg font-bold" href="Home.html">HOME</a>
+            <a class="nav-link text-white text-lg font-bold" href="#">ASSESSMENT</a>
+            <a class="nav-link text-white text-lg font-bold bg-[#F4A300] p-2 rounded" href="Lecture.html">E-LECTURES</a>
+            <a class="nav-link text-white text-lg font-bold" href="Courses.html">COURESES</a>
+            <a class="nav-link text-white text-lg font-bold" href="About.html">ABOUT US</a>
+        </nav>
+        <div>
+            <div class="dropdown">
+                <i class="fas fa-user text-white text-2xl"></i>
+                <div class="dropdown-content">
+                    <a class="LogIn" href="Login.html">LogIn</a><br>
+                    <a class="LogOut" href="#">LogOut</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="flex justify-center mt-8 space-x-4">
+        <!-- STEM Icon -->
+        <div class="course-card bg-white border-4 border-[#A63D2D] rounded-lg p-4 flex flex-col items-center" id="STEM">
+            <img alt="STEM icon" class="h-24 w-24 mb-2" src="images/stem.png"/>
+            <span class="text-[#F4A300] text-3xl font-bold">STEM</span>
+            <div class="course-info">
+                <p>Science, Technology, Engineering, and Mathematics are key areas in STEM.</p>
+            </div>
+        </div>
+        <!-- ABM Icon -->
+        <div class="course-card bg-white border-4 border-[#A63D2D] rounded-lg p-4 flex flex-col items-center" id="ABM">
+            <img alt="ABM icon" class="h-24 w-24 mb-2" src="images/abm.png"/>
+            <span class="text-[#F4A300] text-3xl font-bold">ABM</span>
+            <div class="course-info">
+                <p>Accounting, Business, and Management programs help you prepare for corporate roles.</p>
+            </div>
+        </div>
+        <!-- HUMSS Icon -->
+        <div class="course-card bg-white border-4 border-[#A63D2D] rounded-lg p-4 flex flex-col items-center" id="HUMSS">
+            <img alt="HUMSS icon" class="h-24 w-24 mb-2" src="images/humss.png"/>
+            <span class="text-[#F4A300] text-3xl font-bold">HUMSS</span>
+            <div class="course-info">
+                <p>Humanities and Social Sciences focus on human behavior and societal impact.</p>
+            </div>
+        </div>
+        <!-- TVL Icon -->
+        <div class="course-card bg-white border-4 border-[#A63D2D] rounded-lg p-4 flex flex-col items-center" id="TVL">
+            <img alt="TVL icon" class="h-24 w-24 mb-2" src="images/tvl.png"/>
+            <span class="text-[#F4A300] text-3xl font-bold">TVL</span>
+            <div class="course-info">
+                <p>Technical Vocational Livelihood programs provide hands-on skills for technical careers.</p>
+            </div>
+        </div>
+        <!-- GAS Icon -->
+        <div class="course-card bg-white border-4 border-[#A63D2D] rounded-lg p-4 flex flex-col items-center" id="GAS">
+            <img alt="GAS icon" class="h-24 w-24 mb-2" src="images/gas.png"/>
+            <span class="text-[#F4A300] text-3xl font-bold">GAS</span>
+            <div class="course-info">
+                <p>General Academic Strand is ideal for students with diverse interests.</p>
+            </div>
+        </div>
+    </main>
+    <script>
+        // JavaScript to handle click animation and toggle dropdown
+        document.querySelectorAll('.course-card').forEach(card => {
+            card.addEventListener('click', function() {
+                card.classList.add('animate'); // Add the animation class
+                setTimeout(() => {
+                    card.classList.remove('animate'); // Remove the animation class after animation
+                }, 500); // Animation duration in milliseconds
+
+                // Toggle visibility of course info
+                const info = card.querySelector('.course-info');
+                info.style.display = info.style.display === 'none' || info.style.display === '' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+
+
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-white">
+  <footer class="text-white py-8" style="background-color: #A33B3B;">
+        <div class="container mx-auto px-4 flex flex-wrap justify-between">
+            <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                <h2 class="font-bold text-lg mb-4">Address</h2>
+                <p><i class="fas fa-map-marker-alt"></i> 96 Bayanan, Bacoor City, Bacoor, Philippines</p>
+                <p><i class="fas fa-phone-alt"></i> (046) 501 1135</p>
+                <p><i class="fas fa-envelope"></i> admissions.sfacbacoor@gmail.com</p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://www.facebook.com/mysfacbacoor"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@sfacbacoor-basiceducation"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/mysfacbacoor?fbclid=IwY2xjawGVls5leHRuA2FlbQIxMAABHVJg5h9icm27CbuCvJvhugQA4TyMSmPqjVaFqR23UUR67OJUrax0btDJ_w_aem_imnfK_bb4g7O-Talb0Obrg"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                <h2 class="font-bold text-lg mb-4">Info</h2>
+                <p>WELCOME TO STRANDED!
+                  A comprehensive track path assessment website. Journey on choosing the most suitable track which fits your personal interest.</p>
+            </div>
+            <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                <h2 class="font-bold text-lg mb-4">Links</h2>
+                <ul>
+                    <li><a href="Home.html" class="hover:underline">Home</a></li>
+                    <li><a href="#" class="hover:underline">Assessment</a></li>
+                    <li><a href="Lecture.html" class="hover:underline">E-Lectures</a></li>
+                    <li><a href="#" class="hover:underline">Courses</a></li>
+                    <li><a href="About.html" class="hover:underline">About Us</a></li>
+                </ul>
+            </div>
+            <div class="w-full md:w-1/4">
+                <h2 class="font-bold text-lg mb-4">Subscribe</h2>
+                <form>
+                    <input type="email" placeholder="Enter email" class="w-full p-2 mb-4 border-b-2 border-white bg-transparent text-white placeholder-white focus:outline-none">
+                    <button type="submit" class="w-full bg-blue-500 text-white py-2">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-8">
+            <p>© 2024 All Rights Reserved By STRANDED</p>
+        </div>
+    </footer>
+</body>
+
+</html>
