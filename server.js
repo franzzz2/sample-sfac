@@ -6,25 +6,24 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://franzzz2.github.io', // Restrict access to GitHub Pages domain
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-let activeSessions = {};  // Store active sessions by email
-
-const filePath = path.join(__dirname, 'logins.xlsx'); 
+let activeSessions = {};
+const filePath = path.join(__dirname, 'logins.xlsx');
 
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
-  // Validate email domain to allow both domains
-  const validDomains = ['@stfrancis.ph.education', '@stfrancis.edu.com'];
-  const isValidDomain = validDomains.some(domain => email.endsWith(domain));
-
-  if (!isValidDomain) {
-    return res.json({ status: 'error', message: 'Invalid email domain. Please use your @stfrancis.edu.com or @stfrancis.ph.education email.' });
+  if (!email.endsWith('@stfrancis.ph.education') && !email.endsWith('@stfrancis.edu.com')) {
+    return res.json({ status: 'error', message: 'Invalid email. Please use your @stfrancis.ph.education or @stfrancis.edu.com email.' });
   }
 
-  // Check if user is already logged in
   if (activeSessions[email]) {
     return res.json({ status: 'already_logged_in', message: 'User already logged in.' });
   }
@@ -36,6 +35,7 @@ app.post('/login', (req, res) => {
   try {
     workbook = XLSX.readFile(filePath);
   } catch (err) {
+    console.error("Error reading file:", err);
     workbook = XLSX.utils.book_new();
   }
 
@@ -54,28 +54,9 @@ app.post('/login', (req, res) => {
     XLSX.writeFile(workbook, filePath);
     res.json({ status: 'success', message: 'Login data saved successfully.' });
   } catch (err) {
+    console.error("Error writing file:", err);
     res.json({ status: 'error', message: 'Error saving login data' });
   }
-});
-
-app.get('/view-logins', (req, res) => {
-  let workbook;
-  try {
-    workbook = XLSX.readFile(filePath);
-  } catch (err) {
-    return res.json({ status: 'error', message: 'Error reading login data' });
-  }
-
-  const sheetName = 'Logins';
-  const worksheet = workbook.Sheets[sheetName];
-  if (!worksheet) {
-    return res.json({ status: 'error', message: 'No login data found' });
-  }
-
-  const loginData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-  loginData.shift();
-
-  res.json({ status: 'success', data: loginData });
 });
 
 app.listen(3000, () => {
