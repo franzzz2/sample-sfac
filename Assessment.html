@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRANDED</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+.question-section {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.question-section .header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 10px;
+  margin-bottom: 10px;
+}
+
+.question-section .header h1 {
+  margin: 0;
+}
+
+.question-section .content {
+  padding: 20px;
+  border: 5px solid #ccc;
+  border-top: none;
+  font-size: small;
+}
+
+.question-section .content label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.question-section .content input[type="text"],
+.question-section .content textarea {
+  width: 90%;
+  padding: 5px;
+}  
+
+.genquest {
+  background-color: #fff;
+  padding: 20px;
+}
+
+.genquest-header {
+  background-color: #201e1e;
+  color: white;
+  padding:20px 10px;
+  margin-bottom: 10px;
+}
+
+.genquest-content {
+  padding: 10px;
+}
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header Section -->
+    <header class="bg-[#A63D2D] p-4 flex items-center justify-between">
+        <div class="flex items-center">
+            <img alt="Logo" class="h-10 w-25" src="images/logo.png">
+        </div>
+        <nav class="flex space-x-2">
+          <a class="nav-link text-white text-lg font-bold" href="index.html">HOME</a>
+            <a class="nav-link text-white text-lg font-bold bg-[#F4A300] p-2 rounded" href="FirstAssessment.html">ASSESSMENT</a>
+            <a class="nav-link text-white text-lg font-bold" href="Lecture.html">E-LECTURES</a>
+            <a class="nav-link text-white text-lg font-bold" href="#">COURSES</a>
+            <a class="nav-link text-white text-lg font-bold" href="About.html">ABOUT US</a>
+        </nav>
+        <div class="dropdown">
+            <i class="fas fa-user text-white text-2xl"></i>
+            <div class="dropdown-content">
+              <p><a class="LogOut" href="Login.html">LogOut</a></p>
+        </div>
+    </header>
+
+    <div class="question-section">
+        <div class="header">
+          <h1>PERSONAL QUESTIONS:</h1>
+        </div>
+        <div class="content">
+          <label for="name">NAME:</label>
+          <input type="text" id="name" name="name">
+          <br>
+          <label for="grade">GRADE:</label>
+          <input type="text" id="grade" name="grade">  
+          <br>
+          <label for="age">AGE:</label>
+          <input type="text" id="age" name="age">
+          <br>
+          <label>ETC...</label>  
+          <textarea></textarea><br>
+        </div>
+      </div>
+
+      <main>
+        <section class="genquest">
+          <h2 class="genquest-header">GENERAL QUESTIONS:</h2>
+          <div class="genquest-content">
+            <p>1.</p>
+          </div>
+        </section>
+      </main>
+</body>
+</html>
