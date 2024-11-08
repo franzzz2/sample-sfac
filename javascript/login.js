@@ -17,10 +17,10 @@ function redirectToHome(event) {
         // Store login status in localStorage
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('username', username);
-        window.location.href = "Home.html";
+        window.location.href = "index.html";
       } else if (data.status === 'already_logged_in') {
         alert('You are already logged in. Redirecting...');
-        window.location.href = "Home.html";
+        window.location.href = "index.html";
       } else {
         alert("Error saving login data");
       }
@@ -31,6 +31,6 @@ function redirectToHome(event) {
 // Check on page load if the user is already logged in
 document.addEventListener('DOMContentLoaded', () => {
   if (localStorage.getItem('isLoggedIn') === 'true') {
-    window.location.href = "Home.html";
+    window.location.href = "index.html";
   }
 });
