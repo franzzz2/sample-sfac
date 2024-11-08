@@ -51,39 +51,28 @@
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
 
-      // Validate email domain
-      const validDomains = ['@stfrancis.ph.education', '@stfrancis.edu.com'];
-      const isValidDomain = validDomains.some(domain => email.endsWith(domain));
-
-      if (!isValidDomain) {
-        alert("Invalid email domain. Please use your @stfrancis.edu.com or @stfrancis.ph.education email.");
+      if (!email.endsWith('@stfrancis.ph.education') && !email.endsWith('@stfrancis.edu.com')) {
+        alert("Invalid email. Please use your @stfrancis.ph.education or @stfrancis.edu.com email.");
         return;
       }
 
-      fetch('http://localhost:3000/login', {
+      // Replace with your deployed backend URL
+      fetch('https://your-app-name.herokuapp.com/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       })
       .then(response => response.json())
       .then(data => {
         if (data.status === 'success') {
-          localStorage.setItem('isLoggedIn', 'true');
-          localStorage.setItem('email', email);
-          window.location.href = "index.html";
-        } else if (data.status === 'already_logged_in') {
-          alert('You are already logged in.');
           window.location.href = "index.html";
         } else {
-          alert("Error logging in. Please try again.");
+          alert(data.message);
         }
       })
       .catch(error => console.error('Error:', error));
     }
 
-    // Check if user is already logged in on page load
     document.addEventListener('DOMContentLoaded', () => {
       if (localStorage.getItem('isLoggedIn') === 'true') {
         window.location.href = "index.html";
