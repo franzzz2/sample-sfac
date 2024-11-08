@@ -46,35 +46,49 @@
     }
 
     function redirectToHome(event) {
-      event.preventDefault(); // Prevents the form from submitting in the traditional way
+      event.preventDefault();
 
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
 
-      // Check if email ends with @stfrancis.ph.education
-      if (!email.endsWith('@stfrancis.ph.education')) {
-        alert("Invalid email domain. Please use your @stfrancis.ph.education email.");
+      // Validate email domain
+      const validDomains = ['@stfrancis.ph.education', '@stfrancis.edu.com'];
+      const isValidDomain = validDomains.some(domain => email.endsWith(domain));
+
+      if (!isValidDomain) {
+        alert("Invalid email domain. Please use your @stfrancis.edu.com or @stfrancis.ph.education email.");
         return;
       }
 
-      // Send login data to the backend server
-      fetch('http://localhost:3000/login', {  // Make sure the URL matches your backend server address
+      fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }), // Pass 'email' instead of 'username'
+        body: JSON.stringify({ email, password }),
       })
       .then(response => response.json())
       .then(data => {
         if (data.status === 'success') {
-          window.location.href = "Home.html"; // Redirect to the home page
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('email', email);
+          window.location.href = "Home.html";
+        } else if (data.status === 'already_logged_in') {
+          alert('You are already logged in.');
+          window.location.href = "Home.html";
         } else {
-          alert("Error saving login data");
+          alert("Error logging in. Please try again.");
         }
       })
       .catch(error => console.error('Error:', error));
     }
+
+    // Check if user is already logged in on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('isLoggedIn') === 'true') {
+        window.location.href = "index.html";
+      }
+    });
   </script>
 </body>
 </html>
