@@ -1,83 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STRANDED</title>
-  <link rel="stylesheet" href="css/login.css">
-</head>
-<body>
-  <div class="container">
-    <div class="content">
-      <img src="images/schoollogo.png" alt="Saint Francis of Assisi College Logo" class="logo">
-      <h1>WELCOME TO STRANDED!</h1>
-      <p>A comprehensive track path assessment website. Journey on choosing the most suitable track which fits your personal interest.</p>
-      <button onclick="openLoginForm()">LOG IN</button>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRANDED</title>
+    <link rel="stylesheet" href="css/login.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <img src="images/schoollogo.png" alt="Saint Francis of Assisi College Logo" class="logo">
+        <h1>WELCOME TO STRANDED!</h1>
+        <p>A comprehensive track path assessment website. Journey on choosing the most suitable track which fits your personal interest.</p>
+        <button onclick="openLoginForm()">LOG IN</button>
+      </div>
+      <div class="image">
+        <img src="images/abm.png" alt="Student with Laptop">
+      </div>
     </div>
-    <div class="image">
-      <img src="#" alt="Student with Laptop">
+
+    <!-- Login Form Popup -->
+    <div class="login-popup" id="loginPopup">
+      <div class="popup-content">
+        <span onclick="closeLoginForm()" class="close">&times;</span>
+        <h2>Log In</h2>
+        <form onsubmit="redirectToHome(event)">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+          
+          <button type="submit">Log In</button>
+        </form>
+      </div>
     </div>
-  </div>
 
-  <!-- Login Form Popup -->
-  <div class="login-popup" id="loginPopup">
-    <div class="popup-content">
-      <span onclick="closeLoginForm()" class="close">&times;</span>
-      <h2>Log In</h2>
-      <form onsubmit="redirectToHome(event)">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        
-        <button type="submit">Log In</button>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    function openLoginForm() {
-      document.getElementById("loginPopup").style.display = "flex";
-    }
-
-    function closeLoginForm() {
-      document.getElementById("loginPopup").style.display = "none";
-    }
-
-    function redirectToHome(event) {
-      event.preventDefault();
-
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      if (!email.endsWith('@stfrancis.ph.education') && !email.endsWith('@stfrancis.edu.com')) {
-        alert("Invalid email. Please use your @stfrancis.ph.education or @stfrancis.edu.com email.");
-        return;
+    <script>
+      function openLoginForm() {
+        document.getElementById("loginPopup").style.display = "flex";
       }
 
-      // Replace with your deployed backend URL
-      fetch('https://your-app-name.herokuapp.com/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === 'success') {
-          window.location.href = "index.html";
-        } else {
-          alert(data.message);
+      function closeLoginForm() {
+        document.getElementById("loginPopup").style.display = "none";
+      }
+
+      function redirectToHome(event) {
+        event.preventDefault(); // Prevents the form from submitting in the traditional way
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Check if email ends with @stfrancis.ph.education
+        if (!email.endsWith('@stfrancis.ph.education')) {
+          alert("Invalid email domain. Please use your @stfrancis.ph.education email.");
+          return;
         }
-      })
-      .catch(error => console.error('Error:', error));
-    }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.getItem('isLoggedIn') === 'true') {
-        window.location.href = "index.html";
+        // Send login data to the backend server
+        fetch('http://localhost:3000/login', {  // Make sure the URL matches your backend server address
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }), // Pass 'email' instead of 'username'
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            window.location.href = "index.html"; // Redirect to the home page
+          } else {
+            alert("Error saving login data");
+          }
+        })
+        .catch(error => console.error('Error:', error));
       }
-    });
-  </script>
-</body>
-</html>
+    </script>
+  </body>
+  </html>
