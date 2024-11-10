@@ -3,152 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STRANDED</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Latest @ SFAC - STRANDED</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
         }
-        .nav-link:hover {
-            background-color: #ffae00;
-            color: rgb(255, 255, 255);
-            padding: 0.5rem;
-            border-radius: 0.25rem;
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
         }
-        .dropdown {
-            position: relative;
-            display: inline-block;
+        .main-content {
+            width: 70%;
         }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            padding: 12px 16px;
-            z-index: 1;
+        .sidebar {
+            width: 25%;
+            background-color: #e0e0e0;
+            padding: 20px;
         }
-        .dropdown:hover .dropdown-content {
-            display: block;
+        .news-item {
+            background-color: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 5px;
         }
-        .fa-user {
-            color: white;
-            font-size: 20px;
-            margin-left: 80px;
+        .news-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
         }
-        /* Animation styling */
-        .animate {
-            animation: bounce 0.5s ease-in-out;
-        }
-        @keyframes bounce {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-        }
-        /* Course dropdown styling */
-        .course-info {
-            display: none;
-            margin-top: 10px;
-            padding: 10px;
-            border: 2px solid #A63D2D;
-            background-color: #fff8e1;
+        .news-item h2, .sidebar h2 {
+            font-size: 18px;
             color: #333;
-            border-radius: 0.25rem;
+        }
+        .news-item p {
+            font-size: 14px;
+            color: #666;
+        }
+        .news-item .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: white;
+            color: #ff0000;
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .news-item .read-more:hover {
+            background-color: #ff0000;
+            color: white;
+        }
+        .sidebar .social-icons a {
+            color: #333;
+            font-size: 20px;
+            text-decoration: none;
         }
     </style>
 </head>
-<body class="bg-white">
+<body>
+
+    <!-- Header Section -->
     <header class="bg-[#A63D2D] p-4 flex items-center justify-between">
         <div class="flex items-center">
-            <img alt="Logo" class="h-10 w-25" src="images/logo.png">
+            <img alt="Logo" class="h-20 w-auto" src="images/logo.png">
         </div>
-        <nav class="flex space-x-2">
-            <a class="nav-link text-white text-lg font-bold" href="index.html">HOME</a>
+        <nav class="flex space-x-6">
+            <a class="nav-link text-white text-lg font-bold bg-[#F4A300] p-2 rounded" href="index.html">HOME</a>
             <a class="nav-link text-white text-lg font-bold" href="FirstAssessment.html">ASSESSMENT</a>
-            <a class="nav-link text-white text-lg font-bold bg-[#F4A300] p-2 rounded" href="Lecture.html">E-LECTURES</a>
+            <a class="nav-link text-white text-lg font-bold" href="Lecture.html">E-LECTURES</a>
             <a class="nav-link text-white text-lg font-bold" href="Courses.html">COURSES</a>
             <a class="nav-link text-white text-lg font-bold" href="About.html">ABOUT US</a>
         </nav>
-        <div>
-            <div class="dropdown">
-                <i class="fas fa-user text-white text-2xl"></i>
-                <div class="dropdown-content">
-                    <p><a class="LogOut" href="login.html">LogOut</a></p>
+        <div class="relative dropdown">
+            <i class="fas fa-user text-white text-2xl"></i>
+            <div class="dropdown-content">
+                <p><a class="LogIn" href="Login.html">LogIn</a></p>
+                <p><a class="LogOut" href="#">LogOut</a></p>
             </div>
         </div>
     </header>
-    <main class="flex justify-center mt-8 space-x-4">
-        <!-- STEM Icon -->
-        <div class="course-card bg-white border-4 border-[#A63D2D] rounded-lg p-4 flex flex-col items-center" id="STEM">
-            <img alt="STEM icon" class="h-24 w-24 mb-2" src="images/stem.png"/>
-            <span class="text-[#F4A300] text-3xl font-bold">STEM</span>
-            <div class="course-info">
-                <p>Science, Technology, Engineering, and Mathematics are key areas in STEM.</p>
+
+    <!-- Main Content Section -->
+    <main class="p-8 flex space-x-8">
+        <!-- Announcement Section -->
+        <section class="flex-1">
+            <div class="bg-yellow-500 text-white font-bold text-2xl p-4 relative">
+                <span class="absolute -left-8 top-0 bg-yellow-600 w-8 h-8"></span>
+                ANNOUNCEMENT:
             </div>
-        </div>
-        <!-- ABM Icon -->
-        <div class="course-card bg-white border-4 border-[#A63D2D] rounded-lg p-4 flex flex-col items-center" id="ABM">
-            <img alt="ABM icon" class="h-24 w-24 mb-2" src="images/abm.png"/>
-            <span class="text-[#F4A300] text-3xl font-bold">ABM</span>
-            <div class="course-info">
-                <p>Accounting, Business, and Management programs help you prepare for corporate roles.</p>
+            <div class="bg-gray-200 h-64"></div>
+        </section>
+
+        <!-- STEM Section with Pie Chart -->
+        <section class="flex-1 flex items-center justify-center">
+            <div class="w-1/2">
+                <canvas id="myPieChart"></canvas>
             </div>
-        </div>
-        <!-- HUMSS Icon -->
-        <div class="course-card bg-white border-4 border-[#A63D2D] rounded-lg p-4 flex flex-col items-center" id="HUMSS">
-            <img alt="HUMSS icon" class="h-24 w-24 mb-2" src="images/humss.png"/>
-            <span class="text-[#F4A300] text-3xl font-bold">HUMSS</span>
-            <div class="course-info">
-                <p>Humanities and Social Sciences focus on human behavior and societal impact.</p>
-            </div>
-        </div>
-        <!-- TVL Icon -->
-        <div class="course-card bg-white border-4 border-[#A63D2D] rounded-lg p-4 flex flex-col items-center" id="TVL">
-            <img alt="TVL icon" class="h-24 w-24 mb-2" src="images/tvl.png"/>
-            <span class="text-[#F4A300] text-3xl font-bold">TVL</span>
-            <div class="course-info">
-                <p>Technical Vocational Livelihood programs provide hands-on skills for technical careers.</p>
-            </div>
-        </div>
-        <!-- GAS Icon -->
-        <div class="course-card bg-white border-4 border-[#A63D2D] rounded-lg p-4 flex flex-col items-center" id="GAS">
-            <img alt="GAS icon" class="h-24 w-24 mb-2" src="images/gas.png"/>
-            <span class="text-[#F4A300] text-3xl font-bold">GAS</span>
-            <div class="course-info">
-                <p>General Academic Strand is ideal for students with diverse interests.</p>
-            </div>
-        </div>
+        </section>
     </main>
-    <script>
-        // JavaScript to handle click animation and toggle dropdown
-        document.querySelectorAll('.course-card').forEach(card => {
-            card.addEventListener('click', function() {
-                card.classList.add('animate'); // Add the animation class
-                setTimeout(() => {
-                    card.classList.remove('animate'); // Remove the animation class after animation
-                }, 500); // Animation duration in milliseconds
 
-                // Toggle visibility of course info
-                const info = card.querySelector('.course-info');
-                info.style.display = info.style.display === 'none' || info.style.display === '' ? 'block' : 'none';
-            });
-        });
-    </script>
-</body>
+    <!-- News Section -->
+    <section class="container mx-auto p-4">
+        <div class="container">
+            <!-- Main Content -->
+            <div class="main-content">
+                <h1 class="text-3xl font-bold mb-4">LATEST @ SFAC BACOOR</h1>
+                <div class="news-item">
+                    <img alt="Group of people standing in front of a building" src="https://storage.googleapis.com/a1aa/image/yeKxwuW3jJwULS3ZMqZGz3nAcNMS9PnsbafaQswWhl1IePeOB.jpg">
+                    <h2>Academic Team Conducts Monitoring Visit at SFAC Las Piñas Campus</h2>
+                    <p>September 25, 2024</p>
+                    <p>Las Piñas City, September 25, 2024 – The Academic Team (A-Team) continued its campus monitoring with a visit to Saint Francis [...].</p>
+                    <a class="read-more" href="#">READ MORE</a>
+                </div>
+                <!-- Additional news items can be added here -->
+            </div>
 
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h2>Reach Us</h2>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-<head>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-</head>
-<body class="bg-white">
-  <footer class="text-white py-8" style="background-color: #A33B3B;">
+    <!-- Footer Section -->
+    <footer class="text-white py-8" style="background-color: #A33B3B;">
         <div class="container mx-auto px-4 flex flex-wrap justify-between">
             <div class="w-full md:w-1/4 mb-6 md:mb-0">
                 <h2 class="font-bold text-lg mb-4">Address</h2>
@@ -188,6 +184,38 @@
             <p>© 2024 All Rights Reserved By STRANDED</p>
         </div>
     </footer>
-</body>
 
+    <script src="javascript/script.js"></script>
+    <script>
+        // JavaScript for Pie Chart
+        const ctx = document.getElementById('myPieChart').getContext('2d');
+        const myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['STEM', 'ABM', 'HUMMS', 'TVL', 'GAS'],
+                datasets: [{
+                    data: [56, 21, 10, 6, 7],
+                    backgroundColor: ['#D32F2F', '#FFA726', '#FFEB3B', '#FFF176', '#FF7043'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'right' },
+                    tooltip: {
+                        callbacks: {
+                            label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}%`
+                        }
+                    },
+                    datalabels: {
+                        color: 'black',
+                        formatter: (value) => `${value}%`,
+                        font: { size: 16, weight: 'bold' }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
 </html>
