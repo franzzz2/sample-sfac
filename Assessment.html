@@ -10,110 +10,309 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <style>
-    body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #fff;
-}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
 
-.question-section {
-  background-color: #f2f2f2;
-  padding: 20px;
-}
+        .question-section {
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
 
-.question-section .header {
-  background-color: #333;
-  color: #fff;
-  padding: 20px 10px;
-  margin-bottom: 10px;
-}
+        .question-section .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 10px;
+            margin-bottom: 10px;
+        }
 
-.question-section .header h1 {
-  margin: 0;
-}
+        .question-section .header h1 {
+            margin: 0;
+        }
 
-.question-section .content {
-  padding: 20px;
-  border: 5px solid #ccc;
-  border-top: none;
-  font-size: small;
-}
+        .question-section .content {
+            padding: 20px;
+            border: 5px solid #ccc;
+            border-top: none;
+            font-size: small;
+        }
 
-.question-section .content label {
-  display: block;
-  margin-bottom: 5px;
-}
+        .question-section .content label {
+            display: block;
+            margin-bottom: 5px;
+        }
 
-.question-section .content input[type="text"],
-.question-section .content textarea {
-  width: 90%;
-  padding: 5px;
-}  
+        .question-section .content input[type="text"],
+        .question-section .content textarea {
+            width: 90%;
+            padding: 5px;
+        }  
 
-.genquest {
-  background-color: #fff;
-  padding: 20px;
-}
+        .genquest {
+            background-color: #fff;
+            padding: 20px;
+        }
 
-.genquest-header {
-  background-color: #201e1e;
-  color: white;
-  padding:20px 10px;
-  margin-bottom: 10px;
-}
+        .genquest-header {
+            background-color: #201e1e;
+            color: white;
+            padding: 20px 10px;
+            margin-bottom: 10px;
+        }
 
-.genquest-content {
-  padding: 10px;
-}
+        .genquest-content {
+            padding: 10px;
+        }
+
+        /* Dropdown styling */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .question {
+        font-size: 16px;
+        margin-bottom: 10px;
+        }
+
+        .option {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .option input {
+            margin-right: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .submit-button {
+            text-align: center;
+        }
+
+        .submit-button input[type="submit"] {
+            padding: 5px 10px;
+            font-size: 18px;
+            background-color: #B22222; /* Match the background color */
+            border: 2px solid white; /* Add a border */
+            border-radius: 10px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-link {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
     </style>
+     <script>
+        function validateForm() {
+            const rows = document.querySelectorAll('table');
+            let isValid = true;
+
+            rows.forEach(row => {
+                const radios = row.querySelectorAll('input[type="radio"]');
+                let isChecked = false;
+
+                radios.forEach(radio => {
+                    if (radio.checked) {
+                        isChecked = true;
+                    }
+                });
+
+                if (!isChecked) {
+                    isValid = false;
+                    alert('Please select at least one option in each row.');
+                    return false;
+                }
+            });
+
+            return isValid;
+        }
+    </script>
 </head>
 <body class="bg-white">
     <!-- Header Section -->
-    <header class="bg-[#A63D2D] p-4 flex items-center justify-between">
+    <header class="bg-[#A63D2D] p-4 flex items-center justify-between flex-wrap">
         <div class="flex items-center">
-            <img alt="Logo" class="h-10 w-25" src="images/logo.png">
+            <img alt="Logo" class="h-10 w-auto" src="images/logo.png">
         </div>
-        <nav class="flex space-x-2">
-            <a class="nav-link text-white text-lg font-bold" href="index.html">HOME</a>
+        <nav class="flex flex-wrap space-x-2 mt-2">
+            <a class="nav-link text-white text-lg font-bold" href="Home.html">HOME</a>
             <a class="nav-link text-white text-lg font-bold bg-[#F4A300] p-2 rounded" href="FirstAssessment.html">ASSESSMENT</a>
             <a class="nav-link text-white text-lg font-bold" href="Lecture.html">E-LECTURES</a>
-            <a class="nav-link text-white text-lg font-bold" href="Courses.html">COURSES</a>
+            <a class="nav-link text-white text-lg font-bold" href="#">COURSES</a>
             <a class="nav-link text-white text-lg font-bold" href="About.html">ABOUT US</a>
         </nav>
         <div class="dropdown">
             <i class="fas fa-user text-white text-2xl"></i>
             <div class="dropdown-content">
-              <p><a class="LogOut" href="Login.html">LogOut</a></p>
+                <p><a class="LogIn" href="Login.html">LogIn</a></p>
+                <p><a class="LogOut" href="#">LogOut</a></p>
+            </div>
         </div>
     </header>
 
     <div class="question-section">
         <div class="header">
-          <h1>PERSONAL QUESTIONS:</h1>
+            <h1>PERSONAL QUESTIONS:</h1>
         </div>
         <div class="content">
-          <label for="name">NAME:</label>
-          <input type="text" id="name" name="name">
-          <br>
-          <label for="grade">GRADE:</label>
-          <input type="text" id="grade" name="grade">  
-          <br>
-          <label for="age">AGE:</label>
-          <input type="text" id="age" name="age">
-          <br>
-          <label>ETC...</label>  
-          <textarea></textarea><br>
+            <label for="name">NAME:</label>
+            <input type="text" id="name" name="name">
+            <br>
+            <label for="grade">GRADE:</label>
+            <input type="text" id="grade" name="grade">  
+            <br>
+            <label for="age">AGE:</label>
+            <input type="text" id="age" name="age">
+            <br>
+            <label>ETC...</label>  
+            <textarea></textarea><br>
         </div>
-      </div>
+    </div>
 
-      <main>
+    <main>
         <section class="genquest">
-          <h2 class="genquest-header">GENERAL QUESTIONS:</h2>
-          <div class="genquest-content">
-            <p>1.</p>
-          </div>
+            <h2 class="genquest-header">GENERAL QUESTIONS:</h2>
+            <div class="genquest-content">
+        
+
+        <table>
+            <tr>
+                <th>Question</th>
+                <th>Very Often</th>
+                <th>Quite Often</th>
+                <th>Occasionally</th>
+                <th>Very Rarely</th>
+                <th>Never</th>
+            </tr>
+        <form onsubmit="return validateForm()" action="ThankYou.html">
+            <tr>
+                <td class="question">1. Are you easily distracted by external stimuli or unrelated thoughts?</td>
+                <td class="option"><input type="radio" name="q1" value="4"> 4</td>
+                <td class="option"><input type="radio" name="q1" value="3"> 3</td>
+                <td class="option"><input type="radio" name="q1" value="2"> 2</td>
+                <td class="option"><input type="radio" name="q1" value="1"> 1</td>
+                <td class="option"><input type="radio" name="q1" value="0"> 0</td>
+            </tr>
+            <tr>
+                <td class="question">2. Do you often feel overwhelmed or have difficulty managing multiple tasks at once?</td>
+                <td class="option"><input type="radio" name="q2" value="4"> 4</td>
+                <td class="option"><input type="radio" name="q2" value="3"> 3</td>
+                <td class="option"><input type="radio" name="q2" value="2"> 2</td>
+                <td class="option"><input type="radio" name="q2" value="1"> 1</td>
+                <td class="option"><input type="radio" name="q2" value="0"> 0</td>
+            </tr>
+            <tr>
+                <td class="question">3. Are you experiencing challenges in staying focused on specific tasks or activities?</td>
+                <td class="option"><input type="radio" name="q3" value="4"> 4</td>
+                <td class="option"><input type="radio" name="q3" value="3"> 3</td>
+                <td class="option"><input type="radio" name="q3" value="2"> 2</td>
+                <td class="option"><input type="radio" name="q3" value="1"> 1</td>
+                <td class="option"><input type="radio" name="q3" value="0"> 0</td>
+            </tr>
+            <tr>
+                <td class="question">4. Do you frequently misplace or lose important items?</td>
+                <td class="option"><input type="radio" name="q4" value="4"> 4</td>
+                <td class="option"><input type="radio" name="q4" value="3"> 3</td>
+                <td class="option"><input type="radio" name="q4" value="2"> 2</td>
+                <td class="option"><input type="radio" name="q4" value="1"> 1</td>
+                <td class="option"><input type="radio" name="q4" value="0"> 0</td>
+            </tr>
+            <tr>
+                <td class="question">5. Do you find it challenging to stay organized and keep track of deadlines or appointments?</td>
+                <td class="option"><input type="radio" name="q5" value="4"> 4</td>
+                <td class="option"><input type="radio" name="q5" value="3"> 3</td>
+                <td class="option"><input type="radio" name="q5" value="2"> 2</td>
+                <td class="option"><input type="radio" name="q5" value="1"> 1</td>
+                <td class="option"><input type="radio" name="q5" value="0"> 0</td>
+            </tr>
+            <tr>
+                <td class="question">6. Are you experiencing difficulties in problem-solving or decision-making?</td>
+                <td class="option"><input type="radio" name="q6" value="4"> 4</td>
+                <td class="option"><input type="radio" name="q6" value="3"> 3</td>
+                <td class="option"><input type="radio" name="q6" value="2"> 2</td>
+                <td class="option"><input type="radio" name="q6" value="1"> 1</td>
+                <td class="option"><input type="radio" name="q6" value="0"> 0</td>
+            </tr>
+            <tr>
+                <td class="question">7. Are you experiencing any changes in your mood or emotional state, such as increased anxiety or irritability?</td>
+                <td class="option"><input type="radio" name="q7" value="4"> 4</td>
+                <td class="option"><input type="radio" name="q7" value="3"> 3</td>
+                <td class="option"><input type="radio" name="q7" value="2"> 2</td>
+                <td class="option"><input type="radio" name="q7" value="1"> 1</td>
+                <td class="option"><input type="radio" name="q7" value="0"> 0</td>
+            </tr>
+            <tr>
+                <td class="question">8. You emphasize the importance of giving back to the community?</td>
+                <td class="option"><input type="radio" name="q8" value="4"> 4</td>
+                <td class="option"><input type="radio" name="q8" value="3"> 3</td>
+                <td class="option"><input type="radio" name="q8" value="2"> 2</td>
+                <td class="option"><input type="radio" name="q8" value="1"> 1</td>
+                <td class="option"><input type="radio" name="q8" value="0"> 0</td>
+            </tr>
+            <tr>
+                <td class="question">9. You can tell if something work-related is going wrong?</td>
+                <td class="option"><input type="radio" name="q9" value="4"> 4</td>
+                <td class="option"><input type="radio" name="q9" value="3"> 3</td>
+                <td class="option"><input type="radio" name="q9" value="2"> 2</td>
+                <td class="option"><input type="radio" name="q9" value="1"> 1</td>
+                <td class="option"><input type="radio" name="q9" value="0"> 0</td>
+            </tr>
+            <tr>
+                <td class="question">10. You give others the responsibility to make important decisions about their own jobs?</td>
+                <td class="option"><input type="radio" name="q10" value="4"> 4</td>
+                <td class="option"><input type="radio" name="q10" value="3"> 3</td>
+                <td class="option"><input type="radio" name="q10" value="2"> 2</td>
+                <td class="option"><input type="radio" name="q10" value="1"> 1</td>
+                <td class="option"><input type="radio" name="q10" value="0"> 0</td>
+            </tr>
+        </table>
+            <div class="submit-button">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+
         </section>
-      </main>
+    </main>
+    
 </body>
 </html>
